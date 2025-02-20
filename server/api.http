@@ -5,3 +5,7 @@ Content-Type: application/json
   "name": "Bruno Becoski",
   "email": "bruno@rocketseat.com.br"
 }
+
+###
+
+GET http://localhost:3333/invites/bruno123
