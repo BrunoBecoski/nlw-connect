@@ -3,9 +3,9 @@ POST http://localhost:3333/subscriptions
 Content-Type: application/json
 
 {
-  "name": "Usuário Indicado 2",
-  "email": "indicado2@gmail.com",
-  "referrer": "eeff9cce-5c4e-479c-a83e-d61283205cae"
+  "name": "Usuário Indicado 3",
+  "email": "indicado3@gmail.com",
+  "referrer": "dfb9f90b-7c7f-45f2-9d69-0c1975e5069f"
 }
 
 ###
@@ -27,3 +27,8 @@ GET http://localhost:3333/subscribers/eeff9cce-5c4e-479c-a83e-d61283205cae/ranki
 
 # Get subscriber ranking position
 GET http://localhost:3333/subscribers/eeff9cce-5c4e-479c-a83e-d61283205cae/ranking/position
+
+###
+
+# Get ranking
+GET http://localhost:3333/ranking
