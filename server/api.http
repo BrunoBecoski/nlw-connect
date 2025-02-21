@@ -1,3 +1,4 @@
+# Subscribes someone to the event
 POST http://localhost:3333/subscriptions
 Content-Type: application/json
 
@@ -9,12 +10,20 @@ Content-Type: application/json
 
 ###
 
+# Access invite link and redirects user
 GET http://localhost:3333/invites/eeff9cce-5c4e-479c-a83e-d61283205cae
 
 ###
 
+# Get subscriber invite clicks count
 GET http://localhost:3333/subscribers/eeff9cce-5c4e-479c-a83e-d61283205cae/ranking/clicks
 
 ###
 
+# Get subscriber invites count
 GET http://localhost:3333/subscribers/eeff9cce-5c4e-479c-a83e-d61283205cae/ranking/count
+
+###
+
+# Get subscriber ranking position
+GET http://localhost:3333/subscribers/eeff9cce-5c4e-479c-a83e-d61283205cae/ranking/position
