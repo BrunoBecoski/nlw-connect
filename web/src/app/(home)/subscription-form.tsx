@@ -8,7 +8,7 @@ import { z } from "zod";
 
 import { Button } from "@/componentes/button";
 import { InputField, InputIcon, InputRoot } from "@/componentes/input";
-import { postSubscriptions } from "@/http/api";
+import { subscribeToEvent } from "@/http/api";
 
 const subscriptionSchema = z.object({
 	name: z.string().min(2, "Digite seu nome completo"),
@@ -32,7 +32,7 @@ export function SubscriptionForm() {
 	async function onSubscribe({ name, email }: SubscriptionSchema) {
 		const referrer = searchParams.get("referrer");
 
-		const { subscriberId } = await postSubscriptions({ name, email, referrer });
+		const { subscriberId } = await subscribeToEvent({ name, email, referrer });
 
 		router.push(`/invite/${subscriberId}`);
 	}
