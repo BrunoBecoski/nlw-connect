@@ -15,8 +15,6 @@ interface InvitePageProps {
 export default async function InvitePage({ params }: InvitePageProps) {
 	const { subscriberId } = await params;
 
-	console.log(subscriberId);
-
 	const inviteLink = `http://localhost:3333/invites/${subscriberId}`;
 
 	return (
