@@ -8,8 +8,8 @@ type UserType = {
 };
 
 type UserFormType = {
-	email?: string;
-	phone?: string;
+	email: string;
+	phone: string;
 };
 
 const users: UserType[] = [
@@ -29,7 +29,7 @@ const users: UserType[] = [
 		email: "tost@tost.com",
 		phone: "99999999999",
 		ref: 300,
-		refBy: 100,
+		refBy: 200,
 	},
 ];
 
@@ -61,6 +61,17 @@ const showInvite = (userData: UserType) => {
 	`;
 };
 
+const saveUser = (userData: UserFormType) => {
+	const newUser = {
+		...userData,
+		ref: Math.round(Math.random() * 4000),
+		refBy: 100,
+	};
+
+	users.push(newUser);
+	return newUser;
+};
+
 const formAction = () => {
 	const form = document.getElementById("form") as HTMLFormElement;
 
@@ -68,17 +79,21 @@ const formAction = () => {
 		event.preventDefault();
 
 		const formData = new FormData(form);
-		const userData = {
-			email: formData.get("email")?.toString(),
-			phone: formData.get("phone")?.toString(),
-		};
 
-		const user = getUsers(userData);
+		const email = formData.get("email")?.toString();
+		const phone = formData.get("phone")?.toString();
+
+		if (email === undefined || phone === undefined) {
+			return;
+		}
+
+		const user = getUsers({ email, phone });
 
 		if (user) {
 			showInvite(user);
 		} else {
-			console.log(user);
+			const newUser = saveUser({ email, phone });
+			showInvite(newUser);
 		}
 	};
 };
@@ -102,3 +117,9 @@ const startApp = () => {
 };
 
 startApp();
+
+const logo = document.getElementById("logo");
+
+if (logo) {
+	logo.onclick = () => startApp();
+}
