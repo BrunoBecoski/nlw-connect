@@ -59,7 +59,7 @@ const showInvite = (userData: UserType) => {
 
 	app.innerHTML = `
 		<main>
-			<div>Inscrição confirmada!</div>
+			<h3>Inscrição confirmada!</h3>
 
 			<p>
 				Convide mais pessoas e concorra a prêmios!
@@ -80,6 +80,8 @@ const showInvite = (userData: UserType) => {
 			<p>Inscrições feitas</p>
 		</section>
 	`;
+
+	app.setAttribute("class", "page-invite");
 };
 
 const saveUser = (userData: UserFormType) => {
@@ -150,7 +152,8 @@ const startApp = () => {
 							<label>
 								<img src="./src/assets/mail.svg" alt="Email icon" />
 							</label>
-						<input type="email" id="email" name="email" placeholder="E-mail" />
+							<input type="email" id="email" name="email" placeholder="E-mail" />
+						</div>
 
 						<div class="input-group">
 							<label>
@@ -170,7 +173,7 @@ const startApp = () => {
   `;
 
 	app.innerHTML = content;
-
+	app.setAttribute("class", "page-start");
 	formAction();
 };
 
