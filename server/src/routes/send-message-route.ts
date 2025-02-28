@@ -1,6 +1,8 @@
 import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
 import { z } from "zod";
 
+import { answerUserMessage } from "../functions/answer-user-message";
+
 export const sendMessageRoute: FastifyPluginAsyncZod = async (app) => {
 	app.post(
 		"/messages",
@@ -21,7 +23,9 @@ export const sendMessageRoute: FastifyPluginAsyncZod = async (app) => {
 		async (request) => {
 			const { message } = request.body;
 
-			return { response: message };
+			const { response } = await answerUserMessage({ message });
+
+			return { response };
 		},
 	);
 };
