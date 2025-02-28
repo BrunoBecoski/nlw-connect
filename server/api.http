@@ -32,3 +32,13 @@ GET http://localhost:3333/subscribers/eeff9cce-5c4e-479c-a83e-d61283205cae/ranki
 
 # Get ranking
 GET http://localhost:3333/ranking
+
+###
+
+# Send a message to the AI chat
+POST http://localhost:3333/messages
+Content-Type: application/json
+
+{
+  "message": "Quais os e-mails dos usuários cadastrados em minha aplicação?"
+}
