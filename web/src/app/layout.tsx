@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { Montserrat, Oxanium } from "next/font/google";
+
+import { Modal } from "@/components/modal";
 
 import "./globals.css";
-import { Montserrat, Oxanium } from "next/font/google";
 
 export const metadata: Metadata = {
 	title: "devstage",
@@ -31,6 +33,8 @@ export default function RootLayout({
 					{children}
 				</main>
 			</body>
+
+			<Modal />
 		</html>
 	);
 }

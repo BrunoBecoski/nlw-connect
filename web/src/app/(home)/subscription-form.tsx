@@ -6,8 +6,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { Button } from "@/componentes/button";
-import { InputField, InputIcon, InputRoot } from "@/componentes/input";
+import { Button } from "@/components/button";
+import { InputField, InputIcon, InputRoot } from "@/components/input";
 import { subscribeToEvent } from "@/http/api";
 
 const subscriptionSchema = z.object({

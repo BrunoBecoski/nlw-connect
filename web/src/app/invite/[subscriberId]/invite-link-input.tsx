@@ -2,8 +2,8 @@
 
 import { Copy, Link } from "lucide-react";
 
-import { IconButton } from "@/componentes/icon-button";
-import { InputField, InputIcon, InputRoot } from "@/componentes/input";
+import { IconButton } from "@/components/icon-button";
+import { InputField, InputIcon, InputRoot } from "@/components/input";
 
 interface InviteLinkInputProps {
 	inviteLink: string;
