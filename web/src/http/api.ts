@@ -50,11 +50,19 @@ export type GetSubscriberRankingPosition200 = {
 	position: number | null;
 };
 
+export type MessagesBody = {
+	message: string;
+};
+
+export type Messages200 = {
+	response: string;
+};
+
 /**
  * @summary Subscribe to event
  */
 export const getSubscribeToEventUrl = () => {
-	return `http://localhost:3333/subscriptions`;
+	return "http://localhost:3333/subscriptions";
 };
 
 export const subscribeToEvent = async (
@@ -78,7 +86,7 @@ export const subscribeToEvent = async (
  * @summary Access invite link
  */
 export const getAccessInviteLinkUrl = (subscriberId: string) => {
-	return `http://localhost:3333/invites/${subscriberId}`;
+	return "http://localhost:3333/invites/${subscriberId}";
 };
 
 export const accessInviteLink = async (
@@ -100,7 +108,7 @@ export const accessInviteLink = async (
  * @summary Get ranking
  */
 export const getGetRankingUrl = () => {
-	return `http://localhost:3333/ranking`;
+	return "http://localhost:3333/ranking";
 };
 
 export const getRanking = async (
@@ -121,7 +129,7 @@ export const getRanking = async (
  * @summary Get subscriber ranking invites count
  */
 export const getGetSubscriberInviteCountUrl = (subscriberId: string) => {
-	return `http://localhost:3333/subscribers/${subscriberId}/ranking/count`;
+	return "http://localhost:3333/subscribers/${subscriberId}/ranking/count";
 };
 
 export const getSubscriberInviteCount = async (
@@ -143,7 +151,7 @@ export const getSubscriberInviteCount = async (
  * @summary Get subscriber ranking invites clicks count
  */
 export const getGetSubscriberInviteClicksUrl = (subscriberId: string) => {
-	return `http://localhost:3333/subscribers/${subscriberId}/ranking/clicks`;
+	return "http://localhost:3333/subscribers/${subscriberId}/ranking/clicks";
 };
 
 export const getSubscriberInviteClicks = async (
@@ -165,7 +173,7 @@ export const getSubscriberInviteClicks = async (
  * @summary Get subscriber ranking position
  */
 export const getGetSubscriberRankingPositionUrl = (subscriberId: string) => {
-	return `http://localhost:3333/subscribers/${subscriberId}/ranking/position`;
+	return "http://localhost:3333/subscribers/${subscriberId}/ranking/position";
 };
 
 export const getSubscriberRankingPosition = async (
@@ -179,6 +187,30 @@ export const getSubscriberRankingPosition = async (
 
 	const body = [204, 205, 304].includes(res.status) ? null : await res.text();
 	const data: GetSubscriberRankingPosition200 = body ? JSON.parse(body) : {};
+
+	return data;
+};
+
+/**
+ * @summary Send a message to the AI chat
+ */
+export const getMessagesUrl = () => {
+	return "http://localhost:3333/messages";
+};
+
+export const postMessages = async (
+	messagesBody: MessagesBody,
+	options?: RequestInit,
+): Promise<Messages200> => {
+	const res = await fetch(getMessagesUrl(), {
+		...options,
+		method: "POST",
+		headers: { "Content-Type": "application/json", ...options?.headers },
+		body: JSON.stringify(messagesBody),
+	});
+
+	const body = [204, 205, 304].includes(res.status) ? null : await res.text();
+	const data: Messages200 = body ? JSON.parse(body) : {};
 
 	return data;
 };

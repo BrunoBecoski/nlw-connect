@@ -1,11 +1,14 @@
 import type { ComponentProps } from "react";
 
-interface TextAreaRootProps extends ComponentProps<"div"> {}
+interface TextAreaRootProps extends ComponentProps<"div"> {
+	error?: boolean;
+}
 
-export function TextAreaRoot(props: TextAreaRootProps) {
+export function TextAreaRoot({ error = false, ...props }: TextAreaRootProps) {
 	return (
 		<div
-			className="group bg-gray-800 border border-gray-600 rounded-xl p-4 flex items-center gap-2 focus-within:border-gray-100"
+			data-error={error}
+			className="group bg-gray-800 border border-gray-600 rounded-xl p-4 flex items-center gap-2 focus-within:border-gray-100 data-[error=true]:border-danger"
 			{...props}
 		/>
 	);
